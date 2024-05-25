@@ -5,3 +5,7 @@ class Boards(models.Model) :
     data = models.CharField()
     
 
+class Users(models.Model):
+    id = models.AutoField(primary_key=True)
+    login = models.CharField(unique=True)
+    password = models.CharField()
