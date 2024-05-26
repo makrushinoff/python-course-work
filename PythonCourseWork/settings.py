@@ -41,9 +41,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'Puzzle.apps.PuzzleConfig'
 ]
-CORST_ORIGIN_ALLOW_ALL = True
 MIDDLEWARE = [
-    'corsheaders.moddleware.CorsMiddleware'
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -79,8 +77,12 @@ WSGI_APPLICATION = 'PythonCourseWork.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
+        'PORT': '5433'
     }
 }
 
