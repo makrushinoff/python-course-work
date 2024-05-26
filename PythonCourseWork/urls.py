@@ -20,5 +20,6 @@ from Puzzle import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('boards', views.getAllBoards)
+    path('boards', views.getAllBoards),
+    path("boards/<int:boardId>", views.getAllBoards)
 ]
