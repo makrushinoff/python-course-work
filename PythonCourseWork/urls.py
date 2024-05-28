@@ -16,13 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Puzzle import views 
-api = views.ApiView()
+from rest_framework_simplejwt.views import (
+    TokenRefreshView,
+)
+from Puzzle import views
+from Puzzle.views import MyTokenObtainPairView, ApiView, RegisterView, CalculationView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('boards', api.boards_api),
-    path("boards/<int:board_id>", api.boards_api),
-    path('calculations', api.find_circle_loop),
-    path('register', api.register),
-    path('auth', api.authenticate)
+    path('boards', ApiView.as_view()),
+    path("boards/<int:board_id>", ApiView.as_view()),
+    path('calculations', CalculationView.as_view()),
+    path('register', RegisterView.as_view()),
+    path('token', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh', TokenRefreshView.as_view(), name='token_refresh'),
 ]
