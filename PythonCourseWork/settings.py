@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'Puzzle.apps.PuzzleConfig'
+    'Puzzle'
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

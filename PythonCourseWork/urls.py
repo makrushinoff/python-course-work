@@ -20,7 +20,7 @@ from Puzzle import views
 api = views.ApiView()
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('boards', api.getAllBoards),
-    path("boards/<int:boardId>", api.getAllBoards),
+    path('boards', api.boardsApi),
+    path("boards/<int:boardId>", api.boardsApi),
     path('calculations', api.findCircleLoop)
 ]
