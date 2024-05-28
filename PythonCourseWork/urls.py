@@ -17,9 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from Puzzle import views 
-
+api = views.ApiView()
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('boards', views.getAllBoards),
-    path("boards/<int:boardId>", views.getAllBoards)
+    path('boards', api.getAllBoards),
+    path("boards/<int:boardId>", api.getAllBoards),
+    path('calculations', api.findCircleLoop)
 ]
