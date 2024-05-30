@@ -73,22 +73,3 @@ class RegisterView(APIView):
         user.save()
         return JsonResponse({"message": "success"})
 
-# @csrf_exempt
-# def authenticate(self, request):
-#     register_body = json.loads(request.body)
-#     user = Users.objects.get(login=register_body['login'])
-#     if user is None:
-#         raise AuthenticationFailed('User not found')
-#
-#     if not bcrypt.checkpw(register_body['password'].encode('utf-8'), user.password.encode('utf-8')):
-#         raise AuthenticationFailed('Invalid password')
-#
-#     payload = {
-#         'id': user.id,
-#         'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
-#         'iat': datetime.datetime.utcnow()
-#     }
-#
-#     token = jwt.encode(payload, 'secret', algorithm='HS256')
-#
-#     return JsonResponse({'token': token})
