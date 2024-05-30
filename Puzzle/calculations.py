@@ -6,6 +6,7 @@ WHITE = 0
 VISITED = 2
 N = -1
 
+
 class Position:
     def __init__(self, i, j, color):
         self.I = i
@@ -15,8 +16,10 @@ class Position:
     def equals(self, other):
         return self.I == other.I and self.J == other.J and self.Color == other.Color
 
+
 def new_position(i, j, color):
     return Position(i, j, color)
+
 
 def first_step(board, pos):
     # move right
@@ -38,11 +41,13 @@ def first_step(board, pos):
 
     return new_position(N, N, N)
 
+
 def contains(vector, pos):
     for p in vector:
         if p.equals(pos):
             return True
     return False
+
 
 def find_next_positions(board, pos, prev_pos, checked_positions, start_pos):
     positions = []
@@ -103,6 +108,7 @@ def find_next_positions(board, pos, prev_pos, checked_positions, start_pos):
             positions = [p for p in positions if not p.equals(item)]
     return positions
 
+
 def find_black_cells(board):
     blacks = []
     for i in range(SIZE):
@@ -110,6 +116,7 @@ def find_black_cells(board):
             if board[i][j] == BLACK:
                 blacks.append(new_position(i, j, BLACK))
     return blacks
+
 
 def loop(board, start_position):
     board_copy = [row[:] for row in board]

@@ -1,3 +1,7 @@
+import multiprocessing
+import os
+import threading
+
 from rest_framework.decorators import permission_classes, api_view
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
@@ -31,7 +35,14 @@ class ApiView(APIView):
 
     def post(self, request):
         board_generator = BoardGenerator(calculator=Calculator())
-        board_generator.generate_boards()
+        processes = []
+        for i in range(os.cpu_count()):
+            print(f'Thread{i} started to generate boards...')
+            process = multiprocessing.Process(target=board_generator.generate_boards())
+            processes.append(process)
+            process.start()
+        for p in processes:
+            p.join()
         return JsonResponse({"message": "success"})
 
 
